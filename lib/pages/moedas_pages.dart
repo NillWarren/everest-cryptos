@@ -121,7 +121,9 @@ class MoedasPageState extends State<MoedasPageWidgte> {
                 : Container(
                     height: 25,
                     width: 200,
-                    decoration: BoxDecoration(color: Colors.grey),
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(10)),
                   ),
             const Text(
               'Valor total de moedas',
