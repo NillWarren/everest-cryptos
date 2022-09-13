@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import 'package:card_1/models/moeda.dart';
 import 'package:card_1/repositories/moeda_repositry.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -9,10 +6,10 @@ class MoedasPageWidgte extends StatefulWidget {
   const MoedasPageWidgte({super.key});
 
   @override
-  State<MoedasPageWidgte> createState() => MoedasPageState();
+  State<MoedasPageWidgte> createState() => _MoedasPageState();
 }
 
-class MoedasPageState extends State<MoedasPageWidgte> {
+class _MoedasPageState extends State<MoedasPageWidgte> {
   bool visible = true;
   final tabela = MoedaRepository.tabela;
   NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
@@ -34,27 +31,51 @@ class MoedasPageState extends State<MoedasPageWidgte> {
             ),
           ),
           subtitle: Text(tabela[moeda].nome),
-          trailing: AnimatedOpacity(
-            opacity: visible ? 1 : 0,
-            duration: const Duration(milliseconds: 800),
-            child: Column(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      real.format(tabela[moeda].preco),
-                      style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    Icon(Icons.arrow_forward_ios)
-                  ],
-                ),
-                Text(
-                  (tabela[moeda].fracao.toString()),
-                ),
-              ],
-            ),
+          trailing: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  visible
+                      ? Text(
+                          real.format(tabela[moeda].preco),
+                          style: const TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold),
+                        )
+                      : Container(
+                          height: 25,
+                          width: 200,
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 225, 224, 224),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  const Icon(Icons.arrow_forward_ios)
+                ],
+              ),
+              Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  visible
+                      ? Text(
+                          (tabela[moeda].fracao.toString()),
+                        )
+                      : Container(
+                          height: 15,
+                          width: 50,
+                          decoration: BoxDecoration(
+                              color: const Color.fromARGB(255, 225, 224, 224),
+                              borderRadius: BorderRadius.circular(10)),
+                        ),
+                  const SizedBox(
+                    width: 30,
+                  )
+                ],
+              ),
+            ],
           ),
         ),
       ],
@@ -65,7 +86,7 @@ class MoedasPageState extends State<MoedasPageWidgte> {
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: const Color.fromARGB(224, 43, 87, 1),
+        selectedItemColor: const Color.fromARGB(223, 71, 71, 71),
         currentIndex: 1,
         items: const [
           BottomNavigationBarItem(
@@ -110,6 +131,9 @@ class MoedasPageState extends State<MoedasPageWidgte> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 10,
+            ),
             visible
                 ? Text(
                     tabela[0].valorCarteira,
@@ -121,8 +145,13 @@ class MoedasPageState extends State<MoedasPageWidgte> {
                 : Container(
                     height: 25,
                     width: 200,
-                    decoration: BoxDecoration(color: Colors.grey),
+                    decoration: BoxDecoration(
+                        color: const Color.fromARGB(255, 225, 224, 224),
+                        borderRadius: BorderRadius.circular(10)),
                   ),
+            const SizedBox(
+              height: 8,
+            ),
             const Text(
               'Valor total de moedas',
               style: TextStyle(
