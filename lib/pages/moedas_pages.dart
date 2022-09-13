@@ -45,7 +45,7 @@ class _MoedasPageState extends State<MoedasPageWidgte> {
                         )
                       : Container(
                           height: 25,
-                          width: 200,
+                          width: 100,
                           decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 225, 224, 224),
                               borderRadius: BorderRadius.circular(10)),
