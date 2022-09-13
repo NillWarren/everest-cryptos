@@ -6,7 +6,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../repositories/moeda_repositry.dart';
+import '../repositories/coins_repositry.dart';
 
 class ListCoins extends ConsumerStatefulWidget {
   int moeda;
