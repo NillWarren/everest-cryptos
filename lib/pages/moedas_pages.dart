@@ -1,89 +1,25 @@
+import 'package:card_1/provider.dart';
 import 'package:card_1/repositories/moeda_repositry.dart';
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-class MoedasPageWidgte extends StatefulWidget {
+import '../widgets/list_coins.dart';
+
+class MoedasPageWidgte extends ConsumerStatefulWidget {
   const MoedasPageWidgte({super.key});
 
   @override
-  State<MoedasPageWidgte> createState() => _MoedasPageState();
+  ConsumerState<MoedasPageWidgte> createState() => _MoedasPageState();
 }
 
-class _MoedasPageState extends State<MoedasPageWidgte> {
-  bool visible = true;
+class _MoedasPageState extends ConsumerState<MoedasPageWidgte> {
   final tabela = MoedaRepository.tabela;
   NumberFormat real = NumberFormat.currency(locale: 'pt_BR', name: 'R\$');
 
-  Widget listaCoins(int moeda) {
-    return Column(
-      children: <Widget>[
-        ListTile(
-          leading: SizedBox(
-            // ignore: sort_child_properties_last
-            child: Image.asset(tabela[moeda].icone),
-            width: 40,
-          ),
-          title: Text(
-            tabela[moeda].sigla,
-            style: const TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-          subtitle: Text(tabela[moeda].nome),
-          trailing: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  visible
-                      ? Text(
-                          real.format(tabela[moeda].preco),
-                          style: const TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        )
-                      : Container(
-                          height: 25,
-                          width: 100,
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 225, 224, 224),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                  const SizedBox(
-                    width: 5,
-                  ),
-                  const Icon(Icons.arrow_forward_ios)
-                ],
-              ),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  visible
-                      ? Text(
-                          (tabela[moeda].fracao.toString()),
-                        )
-                      : Container(
-                          height: 15,
-                          width: 50,
-                          decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 225, 224, 224),
-                              borderRadius: BorderRadius.circular(10)),
-                        ),
-                  const SizedBox(
-                    width: 30,
-                  )
-                ],
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
+    final bool visible = ref.watch(visibleProvider);
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: const Color.fromARGB(223, 71, 71, 71),
@@ -108,28 +44,31 @@ class _MoedasPageState extends State<MoedasPageWidgte> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text(
-                  'Cripto',
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    color: Color.fromRGBO(224, 43, 87, 1),
+            Padding(
+              padding: const EdgeInsets.only(top: 35),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    'Cripto',
+                    style: TextStyle(
+                      fontSize: 35,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromRGBO(224, 43, 87, 1),
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () => setState(() {
-                    visible = !visible;
-                  }),
-                  icon: Icon(
-                    visible ? Icons.visibility : Icons.visibility_off,
-                    color: Colors.black,
-                    size: 30,
+                  IconButton(
+                    onPressed: () => setState(() {
+                      ref.read(visibleProvider.notifier).state = !visible;
+                    }),
+                    icon: Icon(
+                      visible ? Icons.visibility : Icons.visibility_off,
+                      color: Colors.black,
+                      size: 30,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(
               height: 10,
@@ -163,11 +102,17 @@ class _MoedasPageState extends State<MoedasPageWidgte> {
               height: 15,
             ),
             const Divider(),
-            listaCoins(0),
+            ListCoins(
+              moeda: 0,
+            ),
             const Divider(),
-            listaCoins(1),
+            ListCoins(
+              moeda: 1,
+            ),
             const Divider(),
-            listaCoins(2),
+            ListCoins(
+              moeda: 2,
+            ),
           ],
         ),
       ),
