@@ -1,5 +1,5 @@
 import 'package:card_1/models/moeda.dart';
-import 'package:card_1/provider.dart';
+import 'package:card_1/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';

@@ -1,4 +1,4 @@
-import 'package:card_1/provider.dart';
+import 'package:card_1/provider/provider.dart';
 import 'package:card_1/repositories/moeda_repositry.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
