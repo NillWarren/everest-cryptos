@@ -5,7 +5,7 @@ class Moeda {
   double preco;
   String fracao;
   String valorCarteira;
-  String valorTotal;
+  // String descricao;
 
   Moeda({
     required this.icone,
@@ -14,6 +14,6 @@ class Moeda {
     required this.preco,
     required this.fracao,
     required this.valorCarteira,
-    required this.valorTotal,
+    // required this.descricao,
   });
 }
