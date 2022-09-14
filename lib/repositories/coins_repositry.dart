@@ -1,15 +1,16 @@
-import 'package:card_1/models/moeda.dart';
+import 'package:card_1/models/coins.dart';
 
 class MoedaRepository {
   static List<Moeda> tabela = [
     Moeda(
-        icone: 'assets/images/bitcoin.png',
-        nome: 'Bitcoin',
-        sigla: 'BTC',
-        preco: 6557.00,
-        fracao: '0.65   BTC',
-        valorCarteira: 'R\$ 14.798.00',
-        valorTotal: 'Valor total na Carteira'),
+      icone: 'assets/images/bitcoin.png',
+      nome: 'Bitcoin',
+      sigla: 'BTC',
+      preco: 6557.00,
+      fracao: '0.65   BTC',
+      valorCarteira: 'R\$ 14.798.00',
+      // descricao: 'Valor total na Carteira'
+    ),
     Moeda(
       icone: 'assets/images/ethereum.png',
       nome: 'Ethereum',
@@ -17,7 +18,7 @@ class MoedaRepository {
       preco: 7996.00,
       fracao: '0.94   ETH',
       valorCarteira: '',
-      valorTotal: '',
+      // descricao: '',
     ),
     Moeda(
       icone: 'assets/images/LTC.png',
@@ -26,7 +27,7 @@ class MoedaRepository {
       preco: 245.00,
       fracao: '0.82   LTC',
       valorCarteira: '',
-      valorTotal: '',
+      // descricao: '',
     ),
   ];
 }

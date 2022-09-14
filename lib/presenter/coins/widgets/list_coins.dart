@@ -1,12 +1,10 @@
-import 'package:card_1/models/moeda.dart';
-import 'package:card_1/provider/provider.dart';
+import 'package:card_1/shared/provides/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../repositories/coins_repositry.dart';
+import '../../../repositories/coins_repositry.dart';
 
 class ListCoins extends ConsumerStatefulWidget {
   int moeda;
@@ -25,7 +23,7 @@ class _ListCoinsState extends ConsumerState<ListCoins> {
   Widget build(BuildContext context) {
     final bool visible = ref.watch(visibleProvider);
     return Column(
-      children: <Widget>[
+      children: [
         ListTile(
           leading: SizedBox(
             // ignore: sort_child_properties_last
@@ -54,13 +52,13 @@ class _ListCoinsState extends ConsumerState<ListCoins> {
                         )
                       : Container(
                           height: 25,
-                          width: 100,
+                          width: 130,
                           decoration: BoxDecoration(
                               color: const Color.fromARGB(255, 225, 224, 224),
                               borderRadius: BorderRadius.circular(10)),
                         ),
                   const SizedBox(
-                    width: 5,
+                    width: 8,
                   ),
                   const Icon(Icons.arrow_forward_ios)
                 ],
