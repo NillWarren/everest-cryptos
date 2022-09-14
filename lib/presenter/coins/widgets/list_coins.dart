@@ -22,9 +22,11 @@ class _ListCoinsState extends ConsumerState<ListCoins> {
   @override
   Widget build(BuildContext context) {
     final bool visible = ref.watch(visibleProvider);
+
     return Column(
       children: [
         ListTile(
+          contentPadding: EdgeInsets.all(0),
           leading: SizedBox(
             // ignore: sort_child_properties_last
             child: Image.asset(tabela[widget.moeda].icone),
