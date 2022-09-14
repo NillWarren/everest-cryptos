@@ -15,7 +15,7 @@ class _MovementsPageState extends State<MovementsPage> {
         child: Text(
           'Movimentações',
           style: TextStyle(
-            fontSize: 35,
+            fontSize: 36,
             fontWeight: FontWeight.bold,
           ),
         ),
