@@ -1,10 +1,10 @@
-import 'package:card_1/shared/provides/provider.dart';
+import 'package:card_1/shared/providers/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../repositories/coins_repositry.dart';
+import '../../repositories/coins_repositry.dart';
 
 class ListCoins extends ConsumerStatefulWidget {
   int moeda;

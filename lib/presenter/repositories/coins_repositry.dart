@@ -1,4 +1,4 @@
-import 'package:card_1/models/coins.dart';
+import 'package:card_1/presenter/models/coins.dart';
 
 class MoedaRepository {
   static List<Moeda> tabela = [

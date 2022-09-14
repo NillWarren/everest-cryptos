@@ -19,10 +19,11 @@ class _BottonBarState extends State<BottonBar> {
       iconSize: 35,
       currentIndex: currentIndex,
       onTap: (index) => setState(() => currentIndex = index),
-      items: [
+      items: const [
         BottomNavigationBarItem(
           icon: ImageIcon(
             AssetImage('assets/images/Subtract.png'),
+            color: Color.fromRGBO(224, 43, 87, 1),
           ),
           label: 'Portifólio',
         ),
