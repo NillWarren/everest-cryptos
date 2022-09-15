@@ -1,5 +1,5 @@
 import 'package:card_1/presenter/coins/coins_pages.dart';
-import 'package:card_1/presenter/movements_page.dart';
+import 'package:card_1/presenter/movements/movements_page.dart';
 import 'package:flutter/material.dart';
 
 class BottonBar extends StatefulWidget {
