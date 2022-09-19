@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../widgets/body_graphic.dart';
+import '../widgets/button_convert_coin.dart';
 import '../widgets/header_details.dart';
+import '../widgets/information_currency.dart';
 import '../widgets/time_frame.dart';
 
 class DetailsPage extends StatelessWidget {
@@ -26,6 +28,8 @@ class DetailsPage extends StatelessWidget {
             HeaderDetails(),
             BodyGraphic(),
             TimeFrame(),
+            CurrencyInformation(),
+            ButtonConvertCoin()
           ],
         ),
       ),

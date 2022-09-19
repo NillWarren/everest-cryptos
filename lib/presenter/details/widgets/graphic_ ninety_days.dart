@@ -116,10 +116,6 @@ class Graphic90Days extends StatelessWidget {
               ],
               dotData: FlDotData(show: false),
               color: const Color.fromARGB(255, 224, 43, 87),
-              belowBarData: BarAreaData(
-                show: true,
-                color: Color.fromARGB(255, 224, 43, 87),
-              ),
             ),
           ],
         ),
