@@ -3,6 +3,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import 'presenter/coins/coins_pages.dart';
 import 'presenter/coins/widgets/botton_navigation_bar.dart';
+import 'presenter/details/views/details_page.dart';
 
 void main() {
   runApp(const ProviderScope(child: MyApp()));
@@ -17,7 +18,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(),
-      home: const BottonBar(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => BottonBar(),
+        '/details': (context) => DetailsPage(),
+      },
     );
   }
 }

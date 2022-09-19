@@ -8,7 +8,8 @@ class MoedaRepository {
       sigla: 'BTC',
       preco: 6557.00,
       fracao: '0.65   BTC',
-      valorCarteira: 'R\$ 14.798.00',
+      valorCarteira: 'R\$ 14.798,00',
+      precoDias: [15000, 2000, 4000, 6000, 8500],
     ),
     Moeda(
       icone: 'assets/images/ethereum.png',
@@ -17,6 +18,7 @@ class MoedaRepository {
       preco: 7996.00,
       fracao: '0.94   ETH',
       valorCarteira: '',
+      precoDias: [15000, 2000, 4000, 6000, 8500],
     ),
     Moeda(
       icone: 'assets/images/LTC.png',
@@ -25,6 +27,7 @@ class MoedaRepository {
       preco: 245.00,
       fracao: '0.82   LTC',
       valorCarteira: '',
+      precoDias: [15000, 2000, 4000, 6000, 8500],
     ),
   ];
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
-import '../../../shared/providers/provider.dart';
+import '../../../shared/riverpod/provider.dart';
 import '../../repositories/coins_repositry.dart';
 import 'list_coins.dart';
 

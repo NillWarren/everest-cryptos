@@ -1,4 +1,4 @@
-import 'package:card_1/shared/providers/provider.dart';
+import 'package:card_1/shared/riverpod/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
@@ -60,9 +60,18 @@ class _ListCoinsState extends ConsumerState<ListCoins> {
                               borderRadius: BorderRadius.circular(10)),
                         ),
                   const SizedBox(
-                    width: 8,
+                    width: 4,
                   ),
-                  const Icon(Icons.arrow_forward_ios)
+                  Container(
+                    height: 30,
+                    width: 20,
+                    child: IconButton(
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/details');
+                      },
+                      icon: const Icon(Icons.arrow_forward_ios),
+                    ),
+                  )
                 ],
               ),
               Row(
