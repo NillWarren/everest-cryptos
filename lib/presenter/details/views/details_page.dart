@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../widgets/body_graphic.dart';
 import '../widgets/header_details.dart';
+import '../widgets/time_frame.dart';
 
 class DetailsPage extends StatelessWidget {
   const DetailsPage({
@@ -24,6 +25,7 @@ class DetailsPage extends StatelessWidget {
           children: const [
             HeaderDetails(),
             BodyGraphic(),
+            TimeFrame(),
           ],
         ),
       ),
