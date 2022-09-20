@@ -1,11 +1,11 @@
-import 'package:card_1/shared/riverpod/provider.dart';
 import 'package:flutter/material.dart';
-
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:intl/intl.dart';
 
+import '../../../shared/riverpod/provider.dart';
 import '../../repositories/coins_repositry.dart';
 
+// ignore: must_be_immutable
 class ListCoins extends ConsumerStatefulWidget {
   int moeda;
 
@@ -62,7 +62,7 @@ class _ListCoinsState extends ConsumerState<ListCoins> {
                   const SizedBox(
                     width: 4,
                   ),
-                  Container(
+                  SizedBox(
                     height: 30,
                     width: 20,
                     child: IconButton(

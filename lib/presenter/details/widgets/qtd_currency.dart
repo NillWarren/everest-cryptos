@@ -1,6 +1,8 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
+
+import '../../models/coins.dart';
+import '../../repositories/coins_repositry.dart';
 
 class QtdCoin extends StatelessWidget {
   final double priceCUrrency;
@@ -15,6 +17,11 @@ class QtdCoin extends StatelessWidget {
   Widget build(BuildContext context) {
     final sizeWidth = MediaQuery.of(context).size.width;
     final sizeHeight = MediaQuery.of(context).size.width;
+    List<Moeda> tabela = MoedaRepository.tabela;
+
+    int index = ModalRoute.of(context)!.settings.arguments as int;
+
+    Moeda moeda = tabela[index];
     return Container(
       decoration: BoxDecoration(
         border: Border(
@@ -40,7 +47,7 @@ class QtdCoin extends StatelessWidget {
               width: sizeWidth * 0.45,
               child: AutoSizeText(
                 textAlign: TextAlign.end,
-                '${NumberFormat.simpleCurrency(locale: 'pt_BR', decimalDigits: 8, name: "").format(priceCUrrency)} ${initialsCoin}',
+                moeda.fracao,
                 style: const TextStyle(
                   fontSize: 19,
                   color: Color.fromARGB(255, 47, 47, 51),

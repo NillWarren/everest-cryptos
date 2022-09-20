@@ -16,7 +16,7 @@ class CurrencyInformation extends StatelessWidget {
       children: const [
         PriceCurrency(priceCUrrency: 100745),
         VariationCurrency(variationCurrency: -0.50),
-        QtdCoin(priceCUrrency: 0.65554321, initialsCoin: 'BTC'),
+        QtdCoin(priceCUrrency: 0.65554321, initialsCoin: ''),
         ValueCoin(priceCUrrency: 6557),
       ],
     );

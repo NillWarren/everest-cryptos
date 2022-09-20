@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'widgets/body_coins.dart';
+import '../widgets/body_coins.dart';
 
 class MoedasPageWidgte extends StatelessWidget {
   const MoedasPageWidgte({super.key});

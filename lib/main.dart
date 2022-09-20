@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import 'presenter/coins/coins_pages.dart';
 import 'presenter/coins/widgets/botton_navigation_bar.dart';
 import 'presenter/details/views/details_page.dart';
 

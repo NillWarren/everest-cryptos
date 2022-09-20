@@ -17,9 +17,10 @@ class DetailsPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text(
           'Detalhes',
-          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         backgroundColor: Colors.white,
+        foregroundColor: Colors.black,
       ),
       body: Padding(
         padding: const EdgeInsets.all(15),

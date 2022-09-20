@@ -37,12 +37,13 @@ class HeaderDetails extends HookConsumerWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "${moeda.nome.toString()}",
-                    style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
+                    moeda.nome.toString(),
+                    style: const TextStyle(
+                        fontSize: 34, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    "${moeda.sigla.toString()}",
-                    style: TextStyle(
+                    moeda.sigla.toString(),
+                    style: const TextStyle(
                         fontSize: 17,
                         color: Color.fromARGB(255, 117, 118, 128)),
                   ),
@@ -52,7 +53,7 @@ class HeaderDetails extends HookConsumerWidget {
                 width: MediaQuery.of(context).size.width * 0.12,
                 height: MediaQuery.of(context).size.width * 0.12,
                 decoration: BoxDecoration(
-                  // shape: BoxShape.circle,
+                  shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage(moeda.icone),
@@ -64,11 +65,10 @@ class HeaderDetails extends HookConsumerWidget {
           SizedBox(height: sizeHeight * 0.05),
           SizedBox(
             width: sizeWidth * 0.6,
-            child: AutoSizeText(
+            child: Text(
               'R\$ ${NumberFormat.simpleCurrency(locale: 'pt_BR', decimalDigits: 2, name: "").format(tabela[0].precoDias[moedaIndex])}',
               style: TextStyle(
                 fontSize: sizeHeight * 0.08,
-                fontFamily: "Montserrat",
                 fontWeight: FontWeight.w700,
               ),
               maxLines: 1,
