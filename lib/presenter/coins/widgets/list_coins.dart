@@ -67,7 +67,8 @@ class _ListCoinsState extends ConsumerState<ListCoins> {
                     width: 20,
                     child: IconButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed('/details');
+                        Navigator.of(context).pushNamed('/details',
+                            arguments: widget.moeda); //aqui vai o argumento
                       },
                       icon: const Icon(Icons.arrow_forward_ios),
                     ),

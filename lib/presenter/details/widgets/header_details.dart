@@ -14,9 +14,17 @@ class HeaderDetails extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    //moeda = tabela.index
+
     final sizeWidth = MediaQuery.of(context).size.width;
     final sizeHeight = MediaQuery.of(context).size.width;
-    List<Moeda> moeda = MoedaRepository.tabela;
+
+    List<Moeda> tabela = MoedaRepository.tabela;
+
+    int index = ModalRoute.of(context)!.settings.arguments as int;
+
+    Moeda moeda = tabela[index];
+
     int moedaIndex = ref.watch(precoIndexProvider);
     return SingleChildScrollView(
       child: Column(
@@ -27,13 +35,13 @@ class HeaderDetails extends HookConsumerWidget {
             children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children: [
                   Text(
-                    'Bitcoin',
+                    "${moeda.nome.toString()}",
                     style: TextStyle(fontSize: 34, fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    'BTC',
+                    "${moeda.sigla.toString()}",
                     style: TextStyle(
                         fontSize: 17,
                         color: Color.fromARGB(255, 117, 118, 128)),
@@ -43,11 +51,11 @@ class HeaderDetails extends HookConsumerWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.12,
                 height: MediaQuery.of(context).size.width * 0.12,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   // shape: BoxShape.circle,
                   image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage('assets/images/bitcoin.png'),
+                    image: AssetImage(moeda.icone),
                   ),
                 ),
               ),
@@ -57,7 +65,7 @@ class HeaderDetails extends HookConsumerWidget {
           SizedBox(
             width: sizeWidth * 0.6,
             child: AutoSizeText(
-              'R\$ ${NumberFormat.simpleCurrency(locale: 'pt_BR', decimalDigits: 2, name: "").format(moeda[0].precoDias[moedaIndex])}',
+              'R\$ ${NumberFormat.simpleCurrency(locale: 'pt_BR', decimalDigits: 2, name: "").format(tabela[0].precoDias[moedaIndex])}',
               style: TextStyle(
                 fontSize: sizeHeight * 0.08,
                 fontFamily: "Montserrat",
