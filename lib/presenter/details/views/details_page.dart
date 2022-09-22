@@ -1,39 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-import '../widgets/body_graphic.dart';
-import '../widgets/button_convert_coin.dart';
-import '../widgets/header_details.dart';
-import '../widgets/information_currency.dart';
-import '../widgets/time_frame.dart';
+import '../../coins/model/coin_model.dart';
 
-class DetailsPage extends StatelessWidget {
+import '../riverpod/provider.dart';
+
+import '../widgets/details_body.dart';
+
+class DetailsPage extends HookConsumerWidget {
+  final CoinModel model;
+
   const DetailsPage({
     Key? key,
+    required this.model,
   }) : super(key: key);
 
+  static const routeName = '/details-page';
+
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Detalhes',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: const [
-            HeaderDetails(),
-            BodyGraphic(),
-            TimeFrame(),
-            CurrencyInformation(),
-            ButtonConvertCoin()
-          ],
-        ),
-      ),
-    );
+  Widget build(BuildContext context, WidgetRef ref) {
+    final daysCount = ref.watch(daysCountProvider.state);
+    return DetailsBody(model: model, daysCount: daysCount);
   }
 }

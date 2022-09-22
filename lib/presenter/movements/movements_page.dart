@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-class MovementsPage extends StatefulWidget {
-  const MovementsPage({super.key});
+class MovimentsPage extends HookConsumerWidget {
+  const MovimentsPage({Key? key}) : super(key: key);
+
+  static const routeName = '/moviments-page';
 
   @override
-  State<MovementsPage> createState() => _MovementsPageState();
-}
-
-class _MovementsPageState extends State<MovementsPage> {
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          'Movimentações',
-          style: TextStyle(
-            fontSize: 36,
-            fontWeight: FontWeight.bold,
+  Widget build(BuildContext context, WidgetRef ref) {
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          foregroundColor: Colors.black,
+          backgroundColor: Colors.white,
+          elevation: 1,
+          title: const Text(
+            'Movimentaçoes',
+            style: TextStyle(color: Colors.black),
           ),
         ),
       ),
