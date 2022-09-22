@@ -1,22 +1,25 @@
-import 'package:card_1/presenter/coins/coins_pages.dart';
-import 'package:card_1/presenter/movements_page.dart';
 import 'package:flutter/material.dart';
 
-class BottonBar extends StatefulWidget {
-  const BottonBar({
+import '../../movements/movements_page.dart';
+
+import '../view/crypto_pages.dart';
+
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({
     Key? key,
   }) : super(key: key);
-
+  static const routeName = '/bottomnav-page';
   @override
-  State<BottonBar> createState() => _BottonBarState();
+  State<BottomNavigation> createState() => _BottomNavigState();
 }
 
-class _BottonBarState extends State<BottonBar> {
+class _BottomNavigState extends State<BottomNavigation> {
   late int _currentIndex = 0;
   List pages = [
-    const MoedasPageWidgte(),
-    const MovementsPage(),
+    const CryptoPage(),
+    const MovimentsPage(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +31,7 @@ class _BottonBarState extends State<BottonBar> {
         iconSize: 35,
         currentIndex: _currentIndex,
         onTap: (index) => setState(() => _currentIndex = index),
-        items: const [
+        items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: ImageIcon(AssetImage('assets/images/Subtract.png')),
             label: 'Portifolio',
