@@ -1,37 +1,56 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-class QuantityCoin extends StatelessWidget {
-  final double currentPriceCoin;
+class QtdCoin extends StatelessWidget {
+  final double priceCUrrency;
   final String initialsCoin;
 
-  const QuantityCoin({
+  const QtdCoin({
     Key? key,
-    required this.currentPriceCoin,
+    required this.priceCUrrency,
     required this.initialsCoin,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          const Text(
-            'Quantidade',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 19,
-            ),
+    final sizeWidth = MediaQuery.of(context).size.width;
+    final sizeHeight = MediaQuery.of(context).size.width;
+
+    return Container(
+      decoration: BoxDecoration(
+        border: Border(
+          top: BorderSide(
+            color: const Color.fromARGB(255, 227, 228, 235),
+            width: sizeHeight * 0.002,
           ),
-          Text(
-            '$currentPriceCoin',
-            style: TextStyle(
-              fontSize: 19,
-              color: (currentPriceCoin < 0) ? Colors.red : Colors.black,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            const Text(
+              'Quantidade',
+              style: TextStyle(
+                fontSize: 19,
+                color: Color.fromARGB(255, 117, 118, 128),
+              ),
             ),
-          ),
-        ],
+            SizedBox(
+              width: sizeWidth * 0.45,
+              child: AutoSizeText(
+                textAlign: TextAlign.end,
+                '$priceCUrrency $initialsCoin',
+                style: const TextStyle(
+                  fontSize: 19,
+                  color: Color.fromARGB(255, 47, 47, 51),
+                ),
+                maxLines: 1,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

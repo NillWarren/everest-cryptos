@@ -13,3 +13,6 @@ final viewWalletValueProvider = StateProvider<bool>(
 final daysCountProvider = StateProvider<int>(
   (ref) => 5,
 );
+final timeFrameProvider = StateProvider<int>(
+  (ref) => 5,
+);

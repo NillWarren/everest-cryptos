@@ -5,8 +5,9 @@ class CoinModel {
   double coinVariation;
   double coinQuantity;
   String iconCoin;
-  List<double> coord;
+  // List<double> coord;
   late double? percent;
+  List<double> prices;
 
   CoinModel({
     required this.coinInitials,
@@ -15,8 +16,9 @@ class CoinModel {
     required this.coinVariation,
     required this.coinQuantity,
     required this.iconCoin,
-    required this.coord,
+    // required this.coord,
     this.percent,
+    required this.prices,
   }) {
     percent = _perCoinValue();
   }

@@ -11,12 +11,10 @@ class WalletInfo extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final viewWalletValue = ref.watch(viewWalletValueProvider.state);
-    //final walletController = ref.watch(walletControllerProvider);
 
     return Visibility(
       child: viewWalletValue.state
           ? Text(
-              // 'R\$ ${walletController.getWallet().toStringAsFixed(2).toString()}',
               'R\$ 100.000,00',
               style: TextStyle(
                 color: Colors.black,

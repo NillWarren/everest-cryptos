@@ -4,7 +4,6 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 import '../../coins/model/coin_model.dart';
 
 import '../riverpod/provider.dart';
-
 import '../widgets/details_body.dart';
 
 class DetailsPage extends HookConsumerWidget {
@@ -19,7 +18,7 @@ class DetailsPage extends HookConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final daysCount = ref.watch(daysCountProvider.state);
-    return DetailsBody(model: model, daysCount: daysCount);
+    final timeFrame = ref.watch(timeFrameProvider.state);
+    return DatailsBody(model: model, timeFrame: timeFrame);
   }
 }

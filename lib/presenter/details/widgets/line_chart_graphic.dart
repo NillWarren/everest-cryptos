@@ -1,39 +1,65 @@
+import 'package:decimal/decimal.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../coins/model/coin_model.dart';
+
 import '../riverpod/provider.dart';
 
-class LineChartGraphic extends HookConsumerWidget {
+Decimal pD(String source) => Decimal.parse(source);
+double pS(Decimal source) => double.parse(source.toString());
+
+class Graphic extends HookConsumerWidget {
   final CoinModel model;
 
-  const LineChartGraphic({
+  const Graphic({
     Key? key,
     required this.model,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final daysCount = ref.watch(daysCountProvider.state).state;
-    //pega lista no coin model pela index
-    generateList() {
-      List<FlSpot> spotList = [];
-      for (var i = 0; i <= daysCount; i++) {
-        spotList.add(FlSpot(i.toDouble(), model.coord[i].toDouble()));
+    final timeFrame = ref.watch(timeFrameProvider.state).state;
+    final size = MediaQuery.of(context).size;
+
+    List<FlSpot> generateList() {
+      List<FlSpot> spotsList = [];
+      for (var i = 0; i <= timeFrame; i++) {
+        spotsList.add(FlSpot(i.toDouble(), (model.prices[i])));
       }
-      return spotList;
+      return spotsList;
+    }
+
+    double getMinY() {
+      double minY = 100000;
+      for (var i = 0; i < timeFrame; i++) {
+        if (model.prices[i].toDouble() < minY) {
+          minY = model.prices[i].toDouble();
+        }
+      }
+      return minY;
+    }
+
+    double getMaxY() {
+      double maxX = 0;
+      for (var i = 0; i < timeFrame; i++) {
+        if (model.prices[i].toDouble() > maxX) {
+          maxX = model.prices[i].toDouble();
+        }
+      }
+      return maxX;
     }
 
     return SizedBox(
-      height: MediaQuery.of(context).size.height - 650,
-      width: MediaQuery.of(context).size.width - 40,
+      height: size.height * 0.18,
+      width: size.width,
       child: LineChart(
         LineChartData(
           minX: 0,
-          maxX: daysCount.toDouble(),
-          minY: 0,
-          maxY: 45,
+          maxX: timeFrame.toDouble(),
+          minY: getMinY(),
+          maxY: getMaxY(),
           titlesData: FlTitlesData(show: false),
           gridData: FlGridData(
             show: false,
@@ -42,8 +68,9 @@ class LineChartGraphic extends HookConsumerWidget {
           lineBarsData: [
             LineChartBarData(
               spots: generateList(),
+              barWidth: 3,
               dotData: FlDotData(show: false),
-              color: const Color.fromARGB(230, 207, 52, 41),
+              color: const Color.fromARGB(255, 224, 43, 87),
             ),
           ],
         ),
